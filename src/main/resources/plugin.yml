@@ -1,0 +1,5 @@
+name: simpleEvents
+version: '${version}'
+
+main: org.abbas.simpleEvents.SimpleEvents
+api-version: '1.21'
