@@ -71,11 +71,11 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- 3. Replaced spigot-api with paper-api for AsyncChatEvent -->
+        <!-- PaperMC no longer resolves the untimestamped snapshot reliably; use the immutable published snapshot. -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21.1-R0.1-SNAPSHOT</version>
+            <version>1.21.1-R0.1-20250328.161643-128</version>
             <scope>provided</scope>
         </dependency>
 
