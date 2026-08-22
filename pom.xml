@@ -51,14 +51,9 @@
     </build>
 
     <repositories>
-        <!-- 1. Added PaperMC Repository -->
         <repository>
             <id>papermc</id>
-            <url>https://papermc.io</url>
-        </repository>
-        <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
     </repositories>
 
