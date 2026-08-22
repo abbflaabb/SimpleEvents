@@ -2,6 +2,8 @@
 
 A lightweight Spigot/Paper plugin that exposes a small API for firing custom Bukkit-style events from Java code.
 
+[![](https://jitpack.io/v/abbflaabb/SimpleEvents.svg)](https://jitpack.io/#abbflaabb/SimpleEvents)
+
 ## Overview
 
 `simpleEvents` is designed for Minecraft server plugins that need to trigger custom gameplay events without tightly coupling code to the Bukkit event system. It provides a plugin bootstrap and a set of custom event classes for common scenarios such as:
