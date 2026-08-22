@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,17 +18,17 @@ public class CustomProcessCommandEvent extends Event implements Cancellable {
     private boolean cancel = false;
     private final List<Command> commands;
 
-    public CustomProcessCommandEvent(@NotNull Player player, @NotNull String message, @NotNull List<Command> commands) {
+    public CustomProcessCommandEvent(@NonNull Player player, @NonNull String message, @NonNull List<Command> commands) {
         this.player = player;
         this.message = message;
         // FIXED: Create a copy of the passed list so it isn't empty or directly linked
         this.commands = new ArrayList<>(commands);
     }
-    @NotNull
+    @NonNull
     public Player getPlayer() {
         return player;
     }
-    @NotNull
+    @NonNull
     public String getMessage() {
         return message;
     }
@@ -36,12 +36,12 @@ public class CustomProcessCommandEvent extends Event implements Cancellable {
     public void setMessage(String message) {
         this.message = message;
     }
-    @NotNull
+    @NonNull
     public List<Command> getCommands() {
         return commands;
     }
 
-    public void addCommand(@NotNull Command command) {
+    public void addCommand(@NonNull Command command) {
         this.commands.add(command);
     }
 
@@ -52,12 +52,12 @@ public class CustomProcessCommandEvent extends Event implements Cancellable {
         this.cancel = cancel;
     }
 
-    @NotNull
+    @NonNull
     public static HandlerList getHandlerList() {
         return HANDLER_LIST;
     }
 
-    @NotNull
+    @NonNull
     @Override
     public HandlerList getHandlers() {
         return HANDLER_LIST;

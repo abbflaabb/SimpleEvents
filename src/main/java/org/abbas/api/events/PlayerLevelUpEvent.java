@@ -29,7 +29,7 @@ public class PlayerLevelUpEvent extends Event {
      * @return HANDLER_LIST
      */
     @Override
-    public @Nullable HandlerList getHandlers() {
+    public @NonNull HandlerList getHandlers() {
         return HANDLER_LIST;
     }
 }
