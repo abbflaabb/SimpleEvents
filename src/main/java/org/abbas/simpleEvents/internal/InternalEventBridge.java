@@ -53,21 +53,28 @@ public final class InternalEventBridge implements Listener {
         SimpleEvents.callCustomPlayerQuit(event.getPlayer(), null);
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = false)
     public void onCommand(PlayerCommandPreprocessEvent event) {
+
         List<Command> commands = new ArrayList<>();
 
-        CustomProcessCommandEvent customEvent = new CustomProcessCommandEvent(
-                event.getPlayer(),
-                event.getMessage(),
-                commands
-        );
+        CustomProcessCommandEvent customEvent =
+                new CustomProcessCommandEvent(
+                        event.getPlayer(),
+                        event.getMessage(),
+                        commands
+                );
+
         Bukkit.getPluginManager().callEvent(customEvent);
 
-        // Propagate cancellation and message edits back onto the vanilla event
+        // Custom event cancelled -> cancel the real Bukkit event
         if (customEvent.isCancelled()) {
             event.setCancelled(true);
-        } else if (!customEvent.getMessage().equals(event.getMessage())) {
+            return;
+        }
+
+        // Allow external plugins to modify the command
+        if (!customEvent.getMessage().equals(event.getMessage())) {
             event.setMessage(customEvent.getMessage());
         }
     }
