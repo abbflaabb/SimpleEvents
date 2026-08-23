@@ -2,10 +2,7 @@ package org.abbas.simpleEvents;
 
 import net.kyori.adventure.text.Component;
 import org.abbas.api.events.*;
-<<<<<<< HEAD
 import org.abbas.simpleEvents.internal.InternalEventBridge;
-=======
->>>>>>> 8c5aab2ec1ed774b8a2389bb963f3926a3a5a0e0
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -31,14 +28,10 @@ public final class SimpleEvents extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-<<<<<<< HEAD
-
         // Bridges vanilla Bukkit events (join/quit) into simpleEvents' custom
         // events automatically, so dependent plugins don't have to call
         // callCustomPlayerJoin/Quit manually just to receive them.
         Bukkit.getPluginManager().registerEvents(new InternalEventBridge(), this);
-=======
->>>>>>> 8c5aab2ec1ed774b8a2389bb963f3926a3a5a0e0
     }
 
     @Override

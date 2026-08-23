@@ -74,12 +74,7 @@
     </dependencies>
   </dependencyManagement>
   <properties>
-<<<<<<< HEAD
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>21</java.version>
-=======
-    <java.version>21</java.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
->>>>>>> 8c5aab2ec1ed774b8a2389bb963f3926a3a5a0e0
   </properties>
 </project>
