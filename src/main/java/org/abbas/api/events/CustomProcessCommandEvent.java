@@ -10,6 +10,12 @@ import org.jspecify.annotations.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Custom event fired before a player command is processed.
+ *
+ * <p>Dependent plugins can cancel the command, modify its message, or add
+ * command objects to the event's command list.</p>
+ */
 public class CustomProcessCommandEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLER_LIST = new HandlerList();
@@ -18,45 +24,70 @@ public class CustomProcessCommandEvent extends Event implements Cancellable {
     private boolean cancel = false;
     private final List<Command> commands;
 
-    public CustomProcessCommandEvent(@NonNull Player player, @NonNull String message, @NonNull List<Command> commands) {
+    /**
+     * Creates a custom command-processing event.
+     *
+     * @param player the player who issued the command
+     * @param message the command message
+     * @param commands the initial command list; its contents are copied
+     */
+    public CustomProcessCommandEvent(
+            @NonNull Player player,
+            @NonNull String message,
+            @NonNull List<Command> commands
+    ) {
         this.player = player;
         this.message = message;
-        // FIXED: Create a copy of the passed list so it isn't empty or directly linked
         this.commands = new ArrayList<>(commands);
     }
+
+    /** @return the player who issued the command */
     @NonNull
     public Player getPlayer() {
         return player;
     }
+
+    /** @return the current command message */
     @NonNull
     public String getMessage() {
         return message;
     }
 
+    /** @param message the new command message */
     public void setMessage(String message) {
         this.message = message;
     }
+
+    /** @return the mutable list of command objects associated with the event */
     @NonNull
     public List<Command> getCommands() {
         return commands;
     }
 
+    /** @param command the command object to add */
     public void addCommand(@NonNull Command command) {
         this.commands.add(command);
     }
 
+    /** @return {@code true} when command processing is cancelled */
+    @Override
     public boolean isCancelled() {
         return cancel;
     }
+
+    /** @param cancel whether command processing should be cancelled */
+    @Override
     public void setCancelled(boolean cancel) {
         this.cancel = cancel;
     }
 
+    /** @return the handler list used by this event */
     @NonNull
     public static HandlerList getHandlerList() {
         return HANDLER_LIST;
     }
 
+    /** @return the handler list used by Bukkit's event system */
     @NonNull
     @Override
     public HandlerList getHandlers() {
