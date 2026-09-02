@@ -17,6 +17,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public final class InternalEventBridge implements Listener {
         }
     }
 
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onDeath(PlayerDeathEvent event) {
         Component deathMessage = event.deathMessage() != null
@@ -99,6 +101,17 @@ public final class InternalEventBridge implements Listener {
         Bukkit.getPluginManager().callEvent(customEvent);
 
         event.deathMessage(customEvent.getDeathMessage());
+    }
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onMove(PlayerMoveEvent event) {
+        CustomPlayerMoveEvent customEvent = new CustomPlayerMoveEvent(
+                event.getPlayer(),
+                event.getFrom(),
+                event.getTo()
+        );
+        Bukkit.getPluginManager().callEvent(customEvent);
+
+        event.setTo(customEvent.getTo());
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

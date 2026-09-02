@@ -4,6 +4,7 @@ import net.kyori.adventure.text.Component;
 import org.abbas.api.events.*;
 import org.abbas.simpleEvents.internal.InternalEventBridge;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.command.Command;
@@ -230,5 +231,10 @@ public final class SimpleEvents extends JavaPlugin {
                 new CustomPlayerChatEvent(player, message, channelName, cancelled)
         );
     }
-
+    // for CustomPlayerMoveEvent event
+    public static void callCustomPlayerMove(@NonNull Player player, @NonNull Location from, @NonNull Location to) {
+        Bukkit.getPluginManager().callEvent(
+                new CustomPlayerMoveEvent(player, from, to)
+        );
+    }
 }
